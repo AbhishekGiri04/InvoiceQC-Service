@@ -266,8 +266,7 @@ InvoiceQC-Service/
 ├── 📄 README.md                    # 📖 This file
 ├── 📄 requirements.txt             # 📦 Python dependencies
 ├── 📄 .gitignore                   # 🚫 Git ignore rules
-├── 📄 Dockerfile                   # 🐳 Docker configuration
-└── 📄 VIDEO_SCRIPT.md              # 🎥 Demo video script
+└── 📄 Dockerfile                   # 🐳 Docker configuration
 ```
 
 <br>
@@ -278,7 +277,7 @@ InvoiceQC-Service/
 
 | 📍 Feature                  | 📸 Screenshot                                              |
 |:----------------------------|:-----------------------------------------------------------|
-| Loading Screen              | ![Loading Screen](docs/Loading_Screen.png)                |
+| Loading Screen              | ![Loading Screen](docs/Loading_Page.png)                  |
 | Home Page                   | ![Home Page](docs/Home_Page.png)                          |
 | Swagger UI Documentation    | ![Swagger UI](docs/Swagger_UI.png)                        |
 | API Validation Response     | ![API Check](docs/API_Check.png)                          |
