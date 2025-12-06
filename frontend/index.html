@@ -3,28 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice QC Console</title>
+    <title>Invoice QC Service - AI-Powered Invoice Processing</title>
+    <link rel="icon" type="image/png" href="https://mir-s3-cdn-cf.behance.net/project_modules/hd/ca226b34153161.56c5d4776abb7.png">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📄 Invoice QC Console</h1>
-            <p>Upload PDF invoices for extraction and validation</p>
-        </header>
-
-        <div class="upload-section">
-            <input type="file" id="fileInput" multiple accept=".pdf">
-            <button id="uploadBtn">Upload & Validate</button>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://play-lh.googleusercontent.com/-nebpiDkCBNM28rnti3EBjOIDcoRF7ahOUTYawdF4js61oGj22liXOQ1myMVpzQv_EHoeRFv9H8qqa7jl2lG9UY=w240-h480-rw" alt="Logo" class="logo-img">
+                    <span>Invoice QC Service</span>
+                </div>
+                <nav class="nav">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="http://localhost:8000/docs" target="_blank" class="nav-link">API Docs</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <div id="loading" class="loading" style="display: none;">
-            Processing invoices...
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="brain-emoji">🧠</span> AI-Powered Invoice Processing
+                </h1>
+                <p class="hero-subtitle">
+                    Extract, validate, and process B2B invoices in seconds with intelligent automation
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <i class="fas fa-bolt"></i>
+                        <span class="stat-value">&lt;2s</span>
+                        <span class="stat-label">Processing Time</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-check-circle"></i>
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Validation Accuracy</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="stat-value">6+</span>
+                        <span class="stat-label">Business Rules</span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div id="results" class="results"></div>
+    <!-- Upload Section -->
+    <section class="upload-section" id="home">
+        <div class="container">
+            <div class="upload-card">
+                <div class="upload-header">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Upload Invoice PDFs</h2>
+                    <p>Select one or more PDF invoices for instant extraction and validation</p>
+                </div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Drag &amp; Drop PDF Files Here</h3>
+                    <p>or</p>
+                    <label for="fileInput" class="file-label">
+                        <i class="fas fa-folder-open"></i> Browse Files
+                    </label>
+                    <input type="file" id="fileInput" multiple accept=".pdf" hidden>
+                    <p class="upload-hint">Supports multiple PDF files • Max 10MB per file</p>
+                </div>
+
+                <div id="fileList" class="file-list"></div>
+
+                <button id="uploadBtn" class="upload-btn" disabled>
+                    <i class="fas fa-paper-plane"></i> Process Invoices
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loading -->
+    <div id="loading" class="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Processing invoices...</p>
     </div>
 
+    <!-- Results Section -->
+    <div id="results" class="results"></div>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>PDF Extraction</h3>
+                    <p>Intelligent text parsing with regex patterns for accurate data extraction</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-check-double"></i>
+                    <h3>Smart Validation</h3>
+                    <p>6+ business rules including completeness, format, and anomaly detection</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>High Performance</h3>
+                    <p>Process invoices in under 2 seconds with 100% validation accuracy</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Detailed Reports</h3>
+                    <p>Comprehensive QC reports with errors, warnings, and validation details</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-code"></i>
+                    <h3>REST API</h3>
+                    <p>FastAPI endpoints with Swagger documentation for easy integration</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-terminal"></i>
+                    <h3>CLI Tool</h3>
+                    <p>Command-line interface for batch processing and automation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <div class="footer-logo">
+                        <img src="https://play-lh.googleusercontent.com/-nebpiDkCBNM28rnti3EBjOIDcoRF7ahOUTYawdF4js61oGj22liXOQ1myMVpzQv_EHoeRFv9H8qqa7jl2lG9UY=w240-h480-rw" alt="Invoice QC Logo">
+                        <h3>Invoice QC Service</h3>
+                    </div>
+                    <p>AI-Powered B2B Invoice Extraction &amp; Validation System. Automate your invoice processing with intelligent extraction and validation.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/AbhishekGiri04/InvoiceQC-Service" target="_blank" title="GitHub" class="social-github">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/abhishek-giri04/" target="_blank" title="LinkedIn" class="social-linkedin">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                        <a href="https://t.me/AbhishekGiri7" target="_blank" title="Telegram" class="social-telegram">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="http://localhost:8000/docs" target="_blank">API Documentation</a></li>
+                        <li><a href="http://localhost:8000/redoc" target="_blank">ReDoc</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#home">Upload Invoice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Technology</h4>
+                    <ul>
+                        <li>Python 3.10+</li>
+                        <li>FastAPI</li>
+                        <li>pdfplumber</li>
+                        <li>Pydantic</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-user"></i> <strong>Abhishek Giri</strong></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:abhishekgiri1978@gmail.com">abhishekgiri1978@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Haridwar, Uttarakhand, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Invoice QC Service. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Always show loading page first
+        if (!sessionStorage.getItem('justLoaded')) {
+            window.location.replace('loading.html');
+        } else {
+            sessionStorage.removeItem('justLoaded');
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

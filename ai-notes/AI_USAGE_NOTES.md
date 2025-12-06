@@ -367,6 +367,6 @@ The project demonstrates that AI is a powerful accelerator but not a replacement
 ---
 
 **Document Version:** 1.0  
-**Last Updated:** December 2024  
+**Last Updated:** January 2025  
 **Author:** Abhishek Giri  
 **Project:** Invoice QC Service
