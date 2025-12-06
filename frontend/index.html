@@ -7,6 +7,22 @@
     <link rel="icon" type="image/png" href="https://mir-s3-cdn-cf.behance.net/project_modules/hd/ca226b34153161.56c5d4776abb7.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { visibility: hidden; }
+    </style>
+    <script>
+        // Check before page renders
+        (function() {
+            if (!sessionStorage.getItem('justLoaded')) {
+                window.location.replace('loading.html');
+            } else {
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.body.style.visibility = 'visible';
+                    sessionStorage.removeItem('justLoaded');
+                });
+            }
+        })();
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -79,7 +95,7 @@
                     <p class="upload-hint">Supports multiple PDF files • Max 10MB per file</p>
                 </div>
 
-                <div id="fileList" class="file-list"></div>
+                <div id="fileList" class="file-list" onclick="event.stopPropagation();"></div>
 
                 <button id="uploadBtn" class="upload-btn" disabled>
                     <i class="fas fa-paper-plane"></i> Process Invoices
@@ -191,14 +207,7 @@
         </div>
     </footer>
 
-    <script>
-        // Always show loading page first
-        if (!sessionStorage.getItem('justLoaded')) {
-            window.location.replace('loading.html');
-        } else {
-            sessionStorage.removeItem('justLoaded');
-        }
-    </script>
+
     <script src="script.js"></script>
 </body>
 </html>

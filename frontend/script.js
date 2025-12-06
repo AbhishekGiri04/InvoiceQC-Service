@@ -35,10 +35,10 @@ uploadArea.addEventListener('drop', (e) => {
     handleFiles(e.dataTransfer.files);
 });
 
-// Click to upload
+// Click to upload - only on upload area, not file list
 uploadArea.addEventListener('click', (e) => {
-    // Don't trigger if clicking on file list area or remove button
-    if (e.target.closest('#fileList') || e.target.closest('.remove-file')) return;
+    // Only trigger if clicking directly on upload area elements, not file list
+    if (e.target.closest('.file-list') || e.target.closest('.file-item')) return;
     fileInput.click();
 });
 
@@ -88,10 +88,11 @@ function displayFileList() {
     `).join('');
     
     // Add event listeners to remove buttons
-    document.querySelectorAll('.remove-file').forEach(btn => {
+    document.querySelectorAll('.remove-file').forEach((btn, idx) => {
         btn.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation();
-            const index = parseInt(e.currentTarget.dataset.index);
+            const index = parseInt(btn.dataset.index);
             removeFile(index);
         });
     });
@@ -101,6 +102,7 @@ function displayFileList() {
 function removeFile(index) {
     selectedFiles.splice(index, 1);
     displayFileList();
+    uploadBtn.disabled = selectedFiles.length === 0;
 }
 
 // Upload Button Click
