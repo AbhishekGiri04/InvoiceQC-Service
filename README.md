@@ -197,6 +197,8 @@ Invoice QC Service is a comprehensive system that:
 
 ## 🏗️ Architecture
 
+<div align="center">
+
 ```
 ┌─────────────┐
 │  PDF Files  │
@@ -226,12 +228,13 @@ Invoice QC Service is a comprehensive system that:
                       └──────────────────────┘
 ```
 
-### 📁 Project Structure
+</div>
+
+## 📁 Project Directory Structure
 
 ```
-invoice-qc-service-abhishek-giri/
-│
-├── 📂 invoice_qc/                  # Core Python package
+InvoiceQC-Service/
+├── 📂 invoice_qc/                  # 🐍 Core Python package
 │   ├── 📄 __init__.py              # Package initialization
 │   ├── 📄 extractor.py             # PDF → JSON extraction logic
 │   ├── 📄 validator.py             # JSON → QC validation engine
@@ -243,27 +246,28 @@ invoice-qc-service-abhishek-giri/
 │       ├── 📄 main.py              # FastAPI app setup
 │       └── 📄 routes.py            # API endpoints
 │
-├── 📂 frontend/                    # Web UI
+├── 📂 frontend/                    # 🎨 Web UI
+│   ├── 📄 loading.html             # Loading screen
 │   ├── 📄 index.html               # Main HTML page
 │   ├── 📄 script.js                # JavaScript logic
 │   └── 📄 styles.css               # Styling
 │
-├── 📂 tests/                       # Test suite
+├── 📂 tests/                       # 🧪 Test suite
 │   ├── 📄 __init__.py
 │   └── 📄 test_validator.py        # Unit tests (5 tests)
 │
-├── 📂 pdfs/                        # Sample PDF invoices
-├── 📂 extracted/                   # Output JSON files
-├── 📂 reports/                     # QC validation reports
-├── 📂 docs/                        # Screenshots and documentation
-├── 📂 ai-notes/                    # AI usage documentation
+├── 📂 pdfs/                        # 📄 Sample PDF invoices
+├── 📂 extracted/                   # 📊 Output JSON files
+├── 📂 reports/                     # 📋 QC validation reports
+├── 📂 docs/                        # 📸 Screenshots and documentation
+├── 📂 ai-notes/                    # 🤖 AI usage documentation
 │   └── 📄 AI_USAGE_NOTES.md
 │
-├── 📄 README.md                    # This file
-├── 📄 requirements.txt             # Python dependencies
-├── 📄 .gitignore                   # Git ignore rules
-├── 📄 Dockerfile                   # Docker configuration
-└── 📄 VIDEO_SCRIPT.md              # Demo video script
+├── 📄 README.md                    # 📖 This file
+├── 📄 requirements.txt             # 📦 Python dependencies
+├── 📄 .gitignore                   # 🚫 Git ignore rules
+├── 📄 Dockerfile                   # 🐳 Docker configuration
+└── 📄 VIDEO_SCRIPT.md              # 🎥 Demo video script
 ```
 
 <br>
@@ -272,18 +276,13 @@ invoice-qc-service-abhishek-giri/
 
 ## 📸 Application Screenshots
 
-<div align="center">
-
-### API Health Check
-![Health Check](docs/Health_Check.png)
-
-### Swagger UI Documentation
-![Swagger UI](docs/Swagger_UI.png)
-
-### API Validation Response
-![API Check](docs/API_Check.png)
-
-</div>
+| 📍 Feature                  | 📸 Screenshot                                              |
+|:----------------------------|:-----------------------------------------------------------|
+| Loading Screen              | ![Loading Screen](docs/Loading_Screen.png)                |
+| Home Page                   | ![Home Page](docs/Home_Page.png)                          |
+| Swagger UI Documentation    | ![Swagger UI](docs/Swagger_UI.png)                        |
+| API Validation Response     | ![API Check](docs/API_Check.png)                          |
+| Health Check                | ![Health Check](docs/Health_Check.png)                    |
 
 <br>
 
@@ -696,7 +695,7 @@ curl http://localhost:8000/health
 
 ## 🎥 Demo Video
 
-**📹 Video Link:** [Watch Demo on Google Drive](https://drive.google.com/drive/folders/1vuzkXx9TbX47W9UKYcOGoOATVswSb2zJ?usp=share_link)
+**📹 Video Link:** [Watch Demo on Google Drive](https://drive.google.com/file/d/1Z-saYqxtkf4Ce2qgmk3BSBi5qFQkdvXY/view?usp=share_link)
 
 **Video Contents (15 minutes):**
 1. ✅ Project overview and architecture (2 min)
