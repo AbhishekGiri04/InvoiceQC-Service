@@ -1,37 +1,72 @@
 # Python
-venv/
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
+*.py[cod]
+*$py.class
 *.so
-*.egg
-*.egg-info/
-dist/
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 .DS_Store
 
-# Testing
+# Pytest
 .pytest_cache/
 .coverage
 htmlcov/
+*.cover
+.hypothesis/
 
-# Output folders (keep structure, ignore content)
+# Logs
+*.log
+logs/
+api.log
+
+# Environment variables
+.env
+.env.local
+
+# Output directories
 extracted/*.json
 reports/*.json
 !extracted/.gitkeep
 !reports/.gitkeep
 
-# Logs
-*.log
+# Temporary files
+*.tmp
+*.bak
+*.swp
+.cache/
 
-# Environment
-.env
-.env.local
+# OS
+Thumbs.db
+.DS_Store
+
+# Docker
+*.pid
