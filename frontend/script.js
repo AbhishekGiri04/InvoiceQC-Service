@@ -110,6 +110,11 @@ uploadBtn.addEventListener('click', async () => {
         return;
     }
     
+    if (selectedFiles.length > 4) {
+        alert('Please upload maximum 4 PDFs at a time for better performance');
+        return;
+    }
+    
     loading.style.display = 'block';
     results.innerHTML = '';
     uploadBtn.disabled = true;
@@ -122,7 +127,8 @@ uploadBtn.addEventListener('click', async () => {
         
         const response = await fetch(`${API_URL}/extract-and-validate`, {
             method: 'POST',
-            body: formData
+            body: formData,
+            signal: AbortSignal.timeout(60000) // 60 second timeout
         });
         
         if (!response.ok) {
@@ -138,12 +144,14 @@ uploadBtn.addEventListener('click', async () => {
         displayFileList();
         
     } catch (error) {
+        console.error('Upload error:', error);
         results.innerHTML = `
             <div class="container">
                 <div class="summary" style="background: #fee2e2; color: #991b1b;">
                     <h2><i class="fas fa-exclamation-triangle"></i> Error</h2>
                     <p>${error.message}</p>
                     <p style="margin-top: 1rem;">Make sure the API server is running on ${API_URL}</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Check browser console for details (F12)</p>
                 </div>
             </div>
         `;

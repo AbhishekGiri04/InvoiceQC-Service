@@ -21,6 +21,20 @@ def parse_date(date_str: str) -> str:
     return None
 
 
+def parse_number(num_str: str) -> float:
+    """Parse European and US number formats"""
+    # Remove spaces
+    num_str = num_str.replace(" ", "")
+    # Check if European format (1.080,00)
+    if "." in num_str and "," in num_str:
+        # European: remove dots, replace comma with dot
+        num_str = num_str.replace(".", "").replace(",", ".")
+    else:
+        # US format or simple: just replace comma with dot
+        num_str = num_str.replace(",", ".")
+    return float(num_str)
+
+
 def extract_invoice_from_pdf(pdf_path: str) -> Invoice:
     """Extract invoice data from a single PDF file"""
     with pdfplumber.open(pdf_path) as pdf:
@@ -73,17 +87,26 @@ def extract_invoice_from_pdf(pdf_path: str) -> Invoice:
         tax_amount = None
         gross_total = None
         
-        total_match = re.search(r"Gesamtwert\s+EUR\s+([\d,\.]+)", text)
-        if total_match:
-            net_total = float(total_match.group(1).replace(",", "."))
+        try:
+            total_match = re.search(r"Gesamtwert\s+EUR\s+([\d]+[\.,][\d]+[\.,]?[\d]*)", text)
+            if total_match:
+                net_total = parse_number(total_match.group(1))
+        except Exception as e:
+            print(f"Error parsing net_total: {e}")
         
-        tax_match = re.search(r"MwSt\.\s+[\d,]+%\s+EUR\s+([\d,\.]+)", text)
-        if tax_match:
-            tax_amount = float(tax_match.group(1).replace(",", "."))
+        try:
+            tax_match = re.search(r"MwSt\.\s+[\d,]+%\s+EUR\s+([\d]+[\.,][\d]+[\.,]?[\d]*)", text)
+            if tax_match:
+                tax_amount = parse_number(tax_match.group(1))
+        except Exception as e:
+            print(f"Error parsing tax_amount: {e}")
         
-        gross_match = re.search(r"Gesamtwert inkl\. MwSt\.\s+EUR\s+([\d,\.]+)", text)
-        if gross_match:
-            gross_total = float(gross_match.group(1).replace(",", "."))
+        try:
+            gross_match = re.search(r"Gesamtwert inkl\. MwSt\.\s+EUR\s+([\d]+[\.,][\d]+[\.,]?[\d]*)", text)
+            if gross_match:
+                gross_total = parse_number(gross_match.group(1))
+        except Exception as e:
+            print(f"Error parsing gross_total: {e}")
         
         # Extract line items from table
         line_items = []
@@ -99,10 +122,19 @@ def extract_invoice_from_pdf(pdf_path: str) -> Invoice:
                                 price_str = str(row[3]) if len(row) > 3 else ""
                                 total_str = str(row[-1]) if row else ""
                                 
-                                if qty_str and price_str and total_str:
-                                    qty = float(re.sub(r"[^\d,\.]", "", qty_str).replace(",", "."))
-                                    price = float(re.sub(r"[^\d,\.]", "", price_str).replace(",", "."))
-                                    total = float(re.sub(r"[^\d,\.]", "", total_str).replace(",", "."))
+                                # Skip if any value is None or empty
+                                if not qty_str or qty_str == 'None' or not price_str or price_str == 'None' or not total_str or total_str == 'None':
+                                    continue
+                                
+                                # Clean and check if numeric
+                                qty_clean = re.sub(r"[^\d,\.\s]", "", qty_str).strip()
+                                price_clean = re.sub(r"[^\d,\.\s]", "", price_str).strip()
+                                total_clean = re.sub(r"[^\d,\.\s]", "", total_str).strip()
+                                
+                                if qty_clean and price_clean and total_clean:
+                                    qty = parse_number(qty_clean)
+                                    price = parse_number(price_clean)
+                                    total = parse_number(total_clean)
                                     
                                     line_items.append(LineItem(
                                         description=str(row[1]) if len(row) > 1 else "",
@@ -110,9 +142,11 @@ def extract_invoice_from_pdf(pdf_path: str) -> Invoice:
                                         unit_price=price,
                                         line_total=total
                                     ))
-                            except:
+                            except Exception as e:
+                                print(f"Error parsing line item: {e}")
                                 continue
-        except:
+        except Exception as e:
+            print(f"Error extracting tables: {e}")
             pass
         
         return Invoice(
