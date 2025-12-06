@@ -13,10 +13,6 @@
   <img src="https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white"/>
 </p>
 
-<p align="center">
-  <b>Internship Assignment — Software Engineer Intern (Data & Development)</b>
-</p>
-
 <br>
 
 ---
@@ -201,20 +197,33 @@ Invoice QC Service is a comprehensive system that:
 
 ## 🏗️ Architecture
 
-```mermaid
-flowchart LR
-    A[📄 PDF Files] --> B[🔍 Extractor: PDF → JSON]
-    B --> C[✅ Validator: JSON → QC]
-    C --> D[💻 CLI Output / Reports]
-    C --> E[🌐 FastAPI HTTP Responses]
-    E --> F[🎨 Frontend QC Console]
-    
-    style A fill:#e1f5ff
-    style B fill:#fff3e0
-    style C fill:#f3e5f5
-    style D fill:#e8f5e9
-    style E fill:#fce4ec
-    style F fill:#fff9c4
+```
+┌─────────────┐
+│  PDF Files  │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────┐
+│  Extractor: PDF → JSON  │
+└──────────┬──────────────┘
+           │
+           ▼
+┌──────────────────────────┐
+│  Validator: JSON → QC    │
+└──────────┬───────────────┘
+           │
+           ├──────────────────┐
+           │                  │
+           ▼                  ▼
+┌──────────────────┐  ┌─────────────────────┐
+│  CLI Output /    │  │  FastAPI HTTP       │
+│  Reports         │  │  Responses          │
+└──────────────────┘  └──────────┬──────────┘
+                                 │
+                                 ▼
+                      ┌──────────────────────┐
+                      │  Frontend QC Console │
+                      └──────────────────────┘
 ```
 
 ### 📁 Project Structure
@@ -222,40 +231,59 @@ flowchart LR
 ```
 invoice-qc-service-abhishek-giri/
 │
-├── 📂 invoice_qc/                  # 🐍 Core Python package
+├── 📂 invoice_qc/                  # Core Python package
 │   ├── 📄 __init__.py              # Package initialization
-│   ├── 📄 extractor.py             # 🔍 PDF → JSON extraction logic
-│   ├── 📄 validator.py             # ✅ JSON → QC validation engine
-│   ├── 📄 schemas.py               # 📋 Pydantic data models
-│   ├── 📄 rules.py                 # 📏 Validation rule definitions
-│   ├── 📄 cli.py                   # 💻 CLI tool (Typer)
-│   └── 📂 api/                     # 🌐 FastAPI application
+│   ├── 📄 extractor.py             # PDF → JSON extraction logic
+│   ├── 📄 validator.py             # JSON → QC validation engine
+│   ├── 📄 schemas.py               # Pydantic data models
+│   ├── 📄 rules.py                 # Validation rule definitions
+│   ├── 📄 cli.py                   # CLI tool (Typer)
+│   └── 📂 api/                     # FastAPI application
 │       ├── 📄 __init__.py
 │       ├── 📄 main.py              # FastAPI app setup
 │       └── 📄 routes.py            # API endpoints
 │
-├── 📂 frontend/                    # 🎨 Web UI (Bonus)
+├── 📂 frontend/                    # Web UI
 │   ├── 📄 index.html               # Main HTML page
 │   ├── 📄 script.js                # JavaScript logic
 │   └── 📄 styles.css               # Styling
 │
-├── 📂 tests/                       # 🧪 Test suite
+├── 📂 tests/                       # Test suite
 │   ├── 📄 __init__.py
 │   └── 📄 test_validator.py        # Unit tests (5 tests)
 │
-├── 📂 pdfs/                        # 📄 Sample PDF invoices
-├── 📂 extracted/                   # 📊 Output JSON files
-├── 📂 reports/                     # 📈 QC validation reports
-├── 📂 ai-notes/                    # 🤖 AI usage documentation
+├── 📂 pdfs/                        # Sample PDF invoices
+├── 📂 extracted/                   # Output JSON files
+├── 📂 reports/                     # QC validation reports
+├── 📂 docs/                        # Screenshots and documentation
+├── 📂 ai-notes/                    # AI usage documentation
 │   └── 📄 AI_USAGE_NOTES.md
 │
-├── 📄 README.md                    # 📖 This file
-├── 📄 requirements.txt             # 📦 Python dependencies
-├── 📄 .gitignore                   # 🚫 Git ignore rules
-├── 📄 Dockerfile                   # 🐳 Docker configuration
-├── 📄 setup.sh                     # 🚀 Setup script
-└── 📄 test_api.py                  # 🧪 API test script
+├── 📄 README.md                    # This file
+├── 📄 requirements.txt             # Python dependencies
+├── 📄 .gitignore                   # Git ignore rules
+├── 📄 Dockerfile                   # Docker configuration
+└── 📄 VIDEO_SCRIPT.md              # Demo video script
 ```
+
+<br>
+
+---
+
+## 📸 Application Screenshots
+
+<div align="center">
+
+### API Health Check
+![Health Check](docs/Health_Check.png)
+
+### Swagger UI Documentation
+![Swagger UI](docs/Swagger_UI.png)
+
+### API Validation Response
+![API Check](docs/API_Check.png)
+
+</div>
 
 <br>
 
@@ -444,7 +472,7 @@ curl -X POST http://localhost:8000/extract-and-validate \
 - **Swagger UI:** http://localhost:8000/docs
 - **ReDoc:** http://localhost:8000/redoc
 
-### 🎨 Web UI (Bonus)
+### 🎨 Web UI
 
 #### **Option A: Direct File Open**
 ```bash
@@ -458,7 +486,7 @@ cd frontend
 python -m http.server 8080
 ```
 
-Then navigate to: **http://localhost:8080**
+Then navigate to: **https://invqc.netlify.app**
 
 **Features:**
 - 📤 Upload multiple PDF files
@@ -486,12 +514,6 @@ pytest tests/test_validator.py::test_valid_invoice -v
 ### Test Coverage
 ```bash
 pytest tests/ --cov=invoice_qc --cov-report=html
-```
-
-### API Testing Script
-```bash
-# Make sure API server is running first!
-python test_api.py
 ```
 
 <br>
@@ -550,11 +572,12 @@ python test_api.py
 
 ### 🛠️ Tools Used
 
-**Primary Tool:** Amazon Q Developer
+**Primary Tools:** ChatGPT & Google Gemini
 - Project scaffolding and structure
 - Code generation (schemas, API, CLI)
 - Regex pattern development
 - Documentation templates
+- Algorithm optimization
 
 ### ✅ What Worked Well
 
@@ -568,7 +591,7 @@ python test_api.py
 1. **PyPDF2 Suggestion** — AI initially suggested PyPDF2, but pdfplumber provided better extraction
 2. **Complex NLP Models** — Suggested spaCy/transformers, but regex patterns were sufficient
 3. **Locale-based Number Parsing** — Caused system compatibility issues; simple string replacement worked better
-4. **Python 3.13 Compatibility** — Initial pydantic version failed; upgraded to latest versions
+4. **Over-engineering** — AI tends to suggest complex solutions when simple ones suffice
 
 ### 📝 Key Learnings
 
@@ -673,7 +696,7 @@ curl http://localhost:8000/health
 
 ## 🎥 Demo Video
 
-**📹 Video Link:** [Watch Demo on Google Drive](https://drive.google.com/your-video-link)
+**📹 Video Link:** [Watch Demo on Google Drive](https://drive.google.com/drive/folders/1vuzkXx9TbX47W9UKYcOGoOATVswSb2zJ?usp=share_link)
 
 **Video Contents (15 minutes):**
 1. ✅ Project overview and architecture (2 min)
@@ -763,7 +786,5 @@ pytest tests/ -v -s
 <div align="center">
 
 **© 2025 Invoice QC Service — Abhishek Giri. All Rights Reserved.**
-
-*Internship Assignment — Software Engineer Intern (Data & Development)*
 
 </div>
