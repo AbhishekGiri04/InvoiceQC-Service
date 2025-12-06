@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+extracted/
+reports/
+*.egg-info/
+.DS_Store
+.vscode/
+.idea/
+.git/
+.gitignore
+README.md
+QUICKSTART.md
+ai-notes/
+test_api.py

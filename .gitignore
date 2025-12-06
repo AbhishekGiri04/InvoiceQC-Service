@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+pdfs/*.pdf
+extracted/
+reports/
+*.egg-info/
+.DS_Store
+.vscode/
+.idea/
