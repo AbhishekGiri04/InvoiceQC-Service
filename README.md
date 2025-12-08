@@ -266,7 +266,9 @@ InvoiceQC-Service/
 ├── 📄 README.md                    # 📖 This file
 ├── 📄 requirements.txt             # 📦 Python dependencies
 ├── 📄 .gitignore                   # 🚫 Git ignore rules
-└── 📄 Dockerfile                   # 🐳 Docker configuration
+├── 📄 .dockerignore                # 🐳 Docker ignore rules
+├── 📄 Dockerfile                   # 🐳 Docker configuration
+└── 📄 vercel.json                  # ▲ Vercel deployment config
 ```
 
 <br>
