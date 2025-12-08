@@ -266,9 +266,7 @@ InvoiceQC-Service/
 ├── 📄 README.md                    # 📖 This file
 ├── 📄 requirements.txt             # 📦 Python dependencies
 ├── 📄 .gitignore                   # 🚫 Git ignore rules
-├── 📄 .dockerignore                # 🐳 Docker ignore rules
-├── 📄 Dockerfile                   # 🐳 Docker configuration
-└── 📄 vercel.json                  # ▲ Vercel deployment config
+└── 📄 Dockerfile                   # 🐳 Docker configuration
 ```
 
 <br>
@@ -474,9 +472,10 @@ curl -X POST http://localhost:8000/extract-and-validate \
 
 ### 🎨 Web UI
 
-#### **Option A: Live Demo (Recommended)**
-```
-https://invoice-qc-service.vercel.app
+#### **Option A: Direct File Open**
+```bash
+# Simply open in browser
+open frontend/index.html
 ```
 
 #### **Option B: Local Server**
@@ -602,19 +601,6 @@ pytest tests/ --cov=invoice_qc --cov-report=html
 **Time Saved:** ~70-80% (3-4 days → 4-6 hours)
 
 For detailed AI interaction notes, see: [`ai-notes/AI_USAGE_NOTES.md`](ai-notes/AI_USAGE_NOTES.md)
-
-<br>
-
----
-
-## 🌐 Live Demo
-
-**Frontend:** [https://invoice-qc-service.vercel.app](https://invoice-qc-service.vercel.app)
-
-**Note:** The live demo requires the backend API to be running locally. To use the full application:
-1. Clone the repository
-2. Start the backend API: `uvicorn invoice_qc.api.main:app --reload`
-3. Visit the live demo or run frontend locally
 
 <br>
 
