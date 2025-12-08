@@ -472,19 +472,18 @@ curl -X POST http://localhost:8000/extract-and-validate \
 
 ### 🎨 Web UI
 
-#### **Option A: Direct File Open**
-```bash
-# Simply open in browser
-open frontend/index.html
+#### **Option A: Live Demo (Recommended)**
+```
+https://invoice-qc-service.vercel.app
 ```
 
 #### **Option B: Local Server**
 ```bash
 cd frontend
-python -m http.server 8080
+python3 -m http.server 5173
 ```
 
-Then navigate to: **https://invqc.netlify.app**
+Then navigate to: **http://localhost:5173**
 
 **Features:**
 - 📤 Upload multiple PDF files
@@ -601,6 +600,19 @@ pytest tests/ --cov=invoice_qc --cov-report=html
 **Time Saved:** ~70-80% (3-4 days → 4-6 hours)
 
 For detailed AI interaction notes, see: [`ai-notes/AI_USAGE_NOTES.md`](ai-notes/AI_USAGE_NOTES.md)
+
+<br>
+
+---
+
+## 🌐 Live Demo
+
+**Frontend:** [https://invoice-qc-service.vercel.app](https://invoice-qc-service.vercel.app)
+
+**Note:** The live demo requires the backend API to be running locally. To use the full application:
+1. Clone the repository
+2. Start the backend API: `uvicorn invoice_qc.api.main:app --reload`
+3. Visit the live demo or run frontend locally
 
 <br>
 
