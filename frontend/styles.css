@@ -343,6 +343,7 @@ body::before {
     background: linear-gradient(135deg, #6366f1, #8b5cf6);
     color: white;
     padding: 1.2rem 3.5rem;
+    border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.4s;
@@ -351,6 +352,8 @@ body::before {
     box-shadow: 0 15px 40px rgba(99,102,241,0.4);
     position: relative;
     overflow: hidden;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
 }
 
 .file-label::before {
