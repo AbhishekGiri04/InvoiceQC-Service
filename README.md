@@ -265,8 +265,10 @@ InvoiceQC-Service/
 │
 ├── 📄 README.md                    # 📖 This file
 ├── 📄 requirements.txt             # 📦 Python dependencies
-├── 📄 .gitignore                   # 🚫 Git ignore rules
-└── 📄 Dockerfile                   # 🐳 Docker configuration
+├── 📄 render.yaml                  # 🚀 Render deployment config
+├── 📄 netlify.toml                 # 🌐 Netlify deployment config
+├── 📄 Dockerfile                   # 🐳 Docker configuration
+└── 📄 .gitignore                   # 🚫 Git ignore rules
 ```
 
 <br>

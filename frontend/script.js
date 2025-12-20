@@ -1,4 +1,7 @@
-const API_URL = 'http://localhost:8000';
+// Environment-aware API URL
+const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:8000'  // Local development
+    : 'https://invoice-qc-api.onrender.com';  // Production (update with your Render URL)
 
 let selectedFiles = [];
 
