@@ -234,40 +234,40 @@ Invoice QC Service is a comprehensive system that:
 
 ```
 InvoiceQC-Service/
-├── 📂 invoice_qc/                  # 🐍 Core Python package
-│   ├── 📄 __init__.py              # Package initialization
-│   ├── 📄 extractor.py             # PDF → JSON extraction logic
-│   ├── 📄 validator.py             # JSON → QC validation engine
-│   ├── 📄 schemas.py               # Pydantic data models
-│   ├── 📄 rules.py                 # Validation rule definitions
-│   ├── 📄 cli.py                   # CLI tool (Typer)
-│   └── 📂 api/                     # FastAPI application
-│       ├── 📄 __init__.py
-│       ├── 📄 main.py              # FastAPI app setup
-│       └── 📄 routes.py            # API endpoints
+├── invoice_qc/                  # Core Python package
+│   ├── __init__.py              # Package initialization
+│   ├── extractor.py             # PDF to JSON extraction logic
+│   ├── validator.py             # JSON to QC validation engine
+│   ├── schemas.py               # Pydantic data models
+│   ├── rules.py                 # Validation rule definitions
+│   ├── cli.py                   # CLI tool (Typer)
+│   └── api/                     # FastAPI application
+│       ├── __init__.py
+│       ├── main.py              # FastAPI app setup
+│       └── routes.py            # API endpoints
 │
-├── 📂 frontend/                    # 🎨 Web UI
-│   ├── 📄 loading.html             # Loading screen
-│   ├── 📄 index.html               # Main HTML page
-│   ├── 📄 script.js                # JavaScript logic
-│   └── 📄 styles.css               # Styling
+├── frontend/                    # Web UI
+│   ├── loading.html             # Loading screen
+│   ├── index.html               # Main HTML page
+│   ├── script.js                # JavaScript logic
+│   └── styles.css               # Styling
 │
-├── 📂 tests/                       # 🧪 Test suite
-│   ├── 📄 __init__.py
-│   └── 📄 test_validator.py        # Unit tests (5 tests)
+├── tests/                       # Test suite
+│   ├── __init__.py
+│   └── test_validator.py        # Unit tests (5 tests)
 │
-├── 📂 pdfs/                        # 📄 Sample PDF invoices
-├── 📂 extracted/                   # 📊 Output JSON files
-├── 📂 reports/                     # 📋 QC validation reports
-├── 📂 docs/                        # 📸 Screenshots and documentation
-├── 📂 ai-notes/                    # 🤖 AI usage documentation
-│   └── 📄 AI_USAGE_NOTES.md
+├── pdfs/                        # Sample PDF invoices
+├── extracted/                   # Output JSON files
+├── reports/                     # QC validation reports
+├── docs/                        # Screenshots and documentation
+├── ai-notes/                    # AI usage documentation
+│   └── AI_USAGE_NOTES.md
 │
-├── 📄 README.md                    # 📖 This file
-├── 📄 requirements.txt             # 📦 Python dependencies
-├── 📄 render.yaml                  # 🚀 Render deployment config
-├── 📄 Dockerfile                   # 🐳 Docker configuration
-└── 📄 .gitignore                   # 🚫 Git ignore rules
+├── README.md                    # This file
+├── requirements.txt             # Python dependencies
+├── render.yaml                  # Render deployment config
+├── Dockerfile                   # Docker configuration
+└── .gitignore                   # Git ignore rules
 ```
 
 <br>
