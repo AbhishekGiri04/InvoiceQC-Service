@@ -468,24 +468,30 @@ curl -X POST http://localhost:8000/extract-and-validate \
 
 #### **Interactive API Documentation**
 
-- **Swagger UI:** http://localhost:8000/docs
-- **ReDoc:** http://localhost:8000/redoc
+- **Swagger UI:** https://invqc-dev.onrender.com/docs
+- **ReDoc:** https://invqc-dev.onrender.com/redoc
 
 ### 🎨 Web UI
 
-#### **Option A: Direct File Open**
+#### **Production Deployment**
 ```bash
-# Simply open in browser
-open frontend/index.html
+# Frontend (Vercel)
+https://invqc-dev.vercel.app
+
+# Backend API (Render)
+https://invqc-dev.onrender.com
 ```
 
-#### **Option B: Local Server**
+#### **Local Development**
 ```bash
+# Option A: Direct File Open
+open frontend/index.html
+
+# Option B: Local Server
 cd frontend
 python3 -m http.server 5173
+# Then navigate to: http://localhost:5173
 ```
-
-Then navigate to: **http://localhost:5173**
 
 **Features:**
 - 📤 Upload multiple PDF files
