@@ -40,9 +40,9 @@ uploadArea.addEventListener('drop', (e) => {
 
 // Click to upload - only on upload area, not file list
 uploadArea.addEventListener('click', (e) => {
-    // Only trigger if clicking directly on upload area elements, not file list
-    if (e.target.closest('.file-list') || e.target.closest('.file-item')) return;
-    fileInput.click();
+    // Only trigger if clicking directly on upload area elements, not file list or button
+    if (e.target.closest('.file-list') || e.target.closest('.file-item') || e.target.closest('.file-label')) return;
+    document.getElementById('fileInput').click();
 });
 
 // Handle Files

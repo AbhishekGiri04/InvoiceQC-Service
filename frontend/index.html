@@ -88,10 +88,10 @@
                     </div>
                     <h3>Drag &amp; Drop PDF Files Here</h3>
                     <p>or</p>
-                    <label for="fileInput" class="file-label">
+                    <button type="button" class="file-label" onclick="document.getElementById('fileInput').click()">
                         <i class="fas fa-folder-open"></i> Browse Files
-                    </label>
-                    <input type="file" id="fileInput" multiple accept=".pdf" hidden>
+                    </button>
+                    <input type="file" id="fileInput" multiple accept=".pdf" style="display: none;">
                     <p class="upload-hint">Supports multiple PDF files • Max 10MB per file</p>
                 </div>
 
