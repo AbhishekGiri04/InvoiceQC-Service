@@ -300,8 +300,8 @@ InvoiceQC-Service/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/abhishekgiri04/invoice-qc-service-abhishek-giri.git
-cd invoice-qc-service-abhishek-giri
+git clone https://github.com/AbhishekGiri04/InvoiceQC-Service.git
+cd InvoiceQC-Service
 
 # 2. Create virtual environment
 python3 -m venv venv
