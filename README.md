@@ -199,33 +199,20 @@ Invoice QC Service is a comprehensive system that:
 
 <div align="center">
 
-```
-┌─────────────┐
-│  PDF Files  │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────────────────┐
-│  Extractor: PDF → JSON  │
-└──────────┬──────────────┘
-           │
-           ▼
-┌──────────────────────────┐
-│  Validator: JSON → QC    │
-└──────────┬───────────────┘
-           │
-           ├──────────────────┐
-           │                  │
-           ▼                  ▼
-┌──────────────────┐  ┌─────────────────────┐
-│  CLI Output /    │  │  FastAPI HTTP       │
-│  Reports         │  │  Responses          │
-└──────────────────┘  └──────────┬──────────┘
-                                 │
-                                 ▼
-                      ┌──────────────────────┐
-                      │  Frontend QC Console │
-                      └──────────────────────┘
+```mermaid
+graph TD
+    A[📄 PDF Files] --> B[🔄 Extractor: PDF → JSON]
+    B --> C[✅ Validator: JSON → QC]
+    C --> D[📊 CLI Output / Reports]
+    C --> E[🌐 FastAPI HTTP Responses]
+    E --> F[🎨 Frontend QC Console]
+    
+    style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
+    style C fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
+    style E fill:#fff9c4,stroke:#f9a825,stroke-width:2px
+    style F fill:#fce4ec,stroke:#c2185b,stroke-width:2px
 ```
 
 </div>
@@ -796,6 +783,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**© 2025 Invoice QC Service — Abhishek Giri. All Rights Reserved.**
+**© 2025 Invoice QC Service. All Rights Reserved.**
 
 </div>
