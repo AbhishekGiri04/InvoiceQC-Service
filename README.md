@@ -264,6 +264,7 @@ InvoiceQC-Service/
 │   └── AI_USAGE_NOTES.md
 │
 ├── README.md                    # This file
+├── LICENSE                      # MIT License
 ├── requirements.txt             # Python dependencies
 ├── render.yaml                  # Render deployment config
 ├── Dockerfile                   # Docker configuration
@@ -761,8 +762,7 @@ pytest tests/ -v -s
 
 ## 📞 Help & Contact
 
-> 💬 *Questions about Invoice QC Service or need technical support?*  
-> I'm here to help with implementation details and integration!
+> 💬 *Got questions or need assistance with Invoice QC Service? We're here to help with integration and customization!*
 
 <div align="center">
 
@@ -778,6 +778,12 @@ pytest tests/ -v -s
 </a>
 
 <br/>
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
