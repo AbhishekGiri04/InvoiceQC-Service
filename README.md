@@ -195,7 +195,7 @@ Invoice QC Service is a comprehensive system that:
 
 ---
 
-## 🏗️ Architecture
+## ⚙️ Architecture
 
 <div align="center">
 
